@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>}} donbidon/core {{</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">}} donbidon/core {{</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/donbidon.html">\donbidon</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-34261198"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-34261198" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-664541176"></a>
+                                <a href="../namespaces/donbidon.html" style="margin-left: 30px; padding-left: 0">donbidon</a>
+            </div>
+            <div id="namespace-664541176" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1178517826"></a>
+                                <a href="../namespaces/donbidon.Core.html" style="margin-left: 30px; padding-left: 0">Core</a>
+            </div>
+            <div id="namespace-1178517826" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-486474395"></a>
+                                <a href="../namespaces/donbidon.Core.Event.html" style="margin-left: 30px; padding-left: 0">Event</a>
+            </div>
+            <div id="namespace-486474395" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Event.Args.html">Args</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Event.Manager.html">Manager</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-887143763"></a>
+                                <a href="../namespaces/donbidon.Core.Log.html" style="margin-left: 30px; padding-left: 0">Log</a>
+            </div>
+            <div id="namespace-887143763" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1391327495"></a>
+                                <a href="../namespaces/donbidon.Core.Log.Method.html" style="margin-left: 30px; padding-left: 0">Method</a>
+            </div>
+            <div id="namespace-1391327495" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.A_Method.html">A_Method</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.A_Stream.html">A_Stream</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.File.html">File</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.Stream.html">Stream</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/donbidon.Core.Log.T_Logger.html">T_Logger</a></li>
+                                                                            <li class="class"><a href="../classes/donbidon.Core.Log.Factory.html">Factory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-41411586"></a>
+                                <a href="../namespaces/donbidon.Core.Registry.html" style="margin-left: 30px; padding-left: 0">Registry</a>
+            </div>
+            <div id="namespace-41411586" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/donbidon.Core.Registry.I_Registry.html">I_Registry</a></li>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Registry.Common.html">Common</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Registry.Recursive.html">Recursive</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Bootstrap.html">Bootstrap</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.ExceptionExtended.html">ExceptionExtended</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Friendlification.html">Friendlification</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/donbidon.Core.Event.html">\donbidon\Core\Event</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\donbidon\Core\Event</small>Manager</h1>
+                    <p><em>Event manager.</em></p>
+                    <pre><code class="language-php">use donbidon\Core\Event\Manager;
+use donbidon\Core\Event\Args;
+
+function firstEventHandler($name, I_Registry $args)
+{
+    echo sprintf("--- %s(%s)\n", __FUNCTION__, $name);
+    $args-&gt;set(__FUNCTION__, true);
+    print_r($args-&gt;get());
+}
+
+function secondEventHandler($name, I_Registry $args)
+{
+    echo sprintf("--- %s(%s)\n", __FUNCTION__, $name);
+    $args-&gt;set(__FUNCTION__, true);
+    print_r($args-&gt;get());
+}
+
+function thirdEventHandler($name, I_Registry $args)
+{
+    echo sprintf("--- %s(%s)\n", __FUNCTION__, $name);
+    $args-&gt;set(__FUNCTION__, true);
+    print_r($args-&gt;get());
+}
+
+function breakingEventHandler($name, I_Registry $args)
+{
+    $args-&gt;set(__FUNCTION__, true);
+    $args-&gt;set(':break:', true);
+    echo sprintf("--- %s(%s)\n", __FUNCTION__, $name);
+    print_r($args-&gt;get());
+}
+
+$evtManager = new Manager;
+$evtManager-&gt;addHandler('event', 'firstEventHandler');
+$evtManager-&gt;addHandler('event', 'breakingEventHandler');
+$evtManager-&gt;addHandler('event', 'secondEventHandler');
+$evtManager-&gt;addHandler('event', 'thirdEventHandler', Manager::PRIORITY_HIGH);
+$evtManager-&gt;addHandler('otherEvent', 'thirdEventHandler');
+$evtManager-&gt;addHandler('otherEvent', 'firstEventHandler');
+$ars = new Args(['arg' =&gt; 'value']);
+$evtManager-&gt;fire('event', $ars);
+$ars = new Args;
+$evtManager-&gt;fire('otherEvent', $ars);
+</code></pre>
+<p>outputs</p>
+<pre><code>--- thirdEventHandler(event)
+Array
+(
+    [arg] =&gt; value
+    [thirdEventHandler] =&gt; 1
+)
+--- firstEventHandler(event)
+Array
+(
+    [arg] =&gt; value
+    [thirdEventHandler] =&gt; 1
+    [firstEventHandler] =&gt; 1
+)
+--- breakingEventHandler(event)
+Array
+(
+    [arg] =&gt; value
+    [thirdEventHandler] =&gt; 1
+    [firstEventHandler] =&gt; 1
+    [breakingEventHandler] =&gt; 1
+    [:break:] =&gt; 1
+)
+--- thirdEventHandler(otherEvent)
+Array
+(
+    [thirdEventHandler] =&gt; 1
+)
+--- firstEventHandler(otherEvent)
+Array
+(
+    [thirdEventHandler] =&gt; 1
+    [firstEventHandler] =&gt; 1
+)</code></pre>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_addHandler" class="">addHandler()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_dropHandlers" class="">dropHandlers()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_disableHandler" class="">disableHandler()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_enableHandler" class="">enableHandler()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_hasHandlers" class="">hasHandlers()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_getHandlers" class="">getHandlers()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_fire" class="">fire()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_setDebug" class="">setDebug()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#method_getDebugEvents" class="">getDebugEvents()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#constant_PRIORITY_MIN" class="">PRIORITY_MIN</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#constant_PRIORITY_LOW" class="">PRIORITY_LOW</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#constant_PRIORITY_DEFAULT" class="">PRIORITY_DEFAULT</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#constant_PRIORITY_HIGH" class="">PRIORITY_HIGH</a><br />
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#constant_PRIORITY_MAX" class="">PRIORITY_MAX</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Event.Manager.html#property_debugEvents" class="">$debugEvents</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Event.Manager.html"><div class="path-wrapper">Event\Manager.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">donbidon\Core</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\donbidon\Core\Event\Manager</div>
+                            </dd>
+
+                        
+                        
+                        
+                                                
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PRIORITY_MIN" name="constant_PRIORITY_MIN" class="anchor"></a>
+            <article id="constant_PRIORITY_MIN" class="constant">
+                <h3 class="">PRIORITY_MIN</h3>
+                <pre class="signature">PRIORITY_MIN = 99 : integer</pre>
+                <p><em>Minimum event handler priority</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#method_addHandler"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::addHandler()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PRIORITY_LOW" name="constant_PRIORITY_LOW" class="anchor"></a>
+            <article id="constant_PRIORITY_LOW" class="constant">
+                <h3 class="">PRIORITY_LOW</h3>
+                <pre class="signature">PRIORITY_LOW = 75 : integer</pre>
+                <p><em>Low event handler priority</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#method_addHandler"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::addHandler()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PRIORITY_DEFAULT" name="constant_PRIORITY_DEFAULT" class="anchor"></a>
+            <article id="constant_PRIORITY_DEFAULT" class="constant">
+                <h3 class="">PRIORITY_DEFAULT</h3>
+                <pre class="signature">PRIORITY_DEFAULT = 50 : integer</pre>
+                <p><em>Default event handler priority</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#method_addHandler"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::addHandler()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PRIORITY_HIGH" name="constant_PRIORITY_HIGH" class="anchor"></a>
+            <article id="constant_PRIORITY_HIGH" class="constant">
+                <h3 class="">PRIORITY_HIGH</h3>
+                <pre class="signature">PRIORITY_HIGH = 25 : integer</pre>
+                <p><em>High event handler priority</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#method_addHandler"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::addHandler()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_PRIORITY_MAX" name="constant_PRIORITY_MAX" class="anchor"></a>
+            <article id="constant_PRIORITY_MAX" class="constant">
+                <h3 class="">PRIORITY_MAX</h3>
+                <pre class="signature">PRIORITY_MAX = 0 : integer</pre>
+                <p><em>Maximum event handler priority</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#method_addHandler"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::addHandler()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_debugEvents" name="property_debugEvents" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$debugEvents</h3>
+                <pre class="signature">$debugEvents : array</pre>
+                <p><em>Array of event debugger hidden events</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addHandler" name="method_addHandler" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addHandler()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addHandler(string  <span class="argument">$name</span>, callback  <span class="argument">$handler</span>, integer  <span class="argument">$priority = self::PRIORITY_DEFAULT</span>) : void</pre>
+                <p><em>Adds event handler.</em></p>
+                <p>To break event handling handler must call $args-&gt;set(':break:', true).<br /><br /></p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>callback</td>
+                                <td>$handler </td>
+                                <td><p>Event handler callback</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$priority </td>
+                                <td><p>Event priority:
+Manager::PRIORITY_LOW, Manager::PRIORITY_DEFAULT or
+Manager::PRIORITY_HIGH, lower number means higher priority</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd><p>In case of invalid priority.</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_dropHandlers" name="method_dropHandlers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">dropHandlers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">dropHandlers(string  <span class="argument">$name = &#039;&#039;</span>, mixed  <span class="argument">$handler = null</span>) : void</pre>
+                <p><em>Drops event handlers.</em></p>
+                <p>Example:</p>
+<pre><code>// drop all 'someEventName' event handlers
+Manager::dropHandler('someEventName');
+
+// drop all 'someEventName' event handlers processing by $object methods only
+Manager::dropHandler('someEventName', $object);</code></pre>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$handler </td>
+                                <td><p>Handler or its part criteria</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd><p>In case of dropping debug event.</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_disableHandler" name="method_disableHandler" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">disableHandler()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">disableHandler(string  <span class="argument">$name</span>) : void</pre>
+                <p><em>Disables handler.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\InvalidArgumentException</dt>
+                            <dd><p>In case of disabling debug event.</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_enableHandler" name="method_enableHandler" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">enableHandler()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">enableHandler(string  <span class="argument">$name</span>) : void</pre>
+                <p><em>Enables handler.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_hasHandlers" name="method_hasHandlers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">hasHandlers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">hasHandlers(string  <span class="argument">$name</span>, mixed  <span class="argument">$handler = null</span>) : boolean</pre>
+                <p><em>Returns true if there are any handlers for specified event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$handler </td>
+                                <td><p>Handler or its part criteria</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getHandlers" name="method_getHandlers" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getHandlers()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getHandlers(string  <span class="argument">$name = null</span>) : array</pre>
+                <p><em>Returns handlers for passed event or all.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_fire" name="method_fire" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">fire()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">fire(string  <span class="argument">$name</span>, \donbidon\Core\Registry\I_Registry  <span class="argument">$args</span>, boolean  <span class="argument">$fireAgain = false</span>) : void</pre>
+                <p><em>Fires event.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td><p>Event name</p></td>
+                            </tr>
+                                                    <tr>
+                                <td><a href="../classes/donbidon.Core.Registry.I_Registry.html">\donbidon\Core\Registry\I_Registry</a></td>
+                                <td>$args </td>
+                                <td><p>Event arguments</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$fireAgain </td>
+                                <td><p>Allow to fire event again</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\RuntimeException</dt>
+                            <dd><p>When invalid handler passed or event already fired.</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDebug" name="method_setDebug" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDebug()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDebug(boolean  <span class="argument">$debug</span>) : void</pre>
+                <p><em>Enables/disables debug events.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$debug </td>
+                                <td><p>Enable/disable flag</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#property_debugEvents"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::$debugEvents</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDebugEvents" name="method_getDebugEvents" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDebugEvents()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDebugEvents() : array</pre>
+                <p><em>Returns list of debug events.</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Event.Manager.html"><div class="path-wrapper">\donbidon\Core\Event\Manager</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Event.Manager.html#property_debugEvents"><span class="namespace-wrapper">\donbidon\Core\Event\Manager::$debugEvents</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Manager.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Event\Manager.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/donbidon.html">\donbidon</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 28th, 2018 at 20:59.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>}} donbidon/core {{</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src').replace( /\\/g, '/');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">}} donbidon/core {{</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/donbidon.html">\donbidon</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-847982634"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-847982634" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1122657734"></a>
+                                <a href="../namespaces/donbidon.html" style="margin-left: 30px; padding-left: 0">donbidon</a>
+            </div>
+            <div id="namespace-1122657734" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-195633526"></a>
+                                <a href="../namespaces/donbidon.Core.html" style="margin-left: 30px; padding-left: 0">Core</a>
+            </div>
+            <div id="namespace-195633526" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-925549094"></a>
+                                <a href="../namespaces/donbidon.Core.Event.html" style="margin-left: 30px; padding-left: 0">Event</a>
+            </div>
+            <div id="namespace-925549094" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Event.Args.html">Args</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Event.Manager.html">Manager</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1593750776"></a>
+                                <a href="../namespaces/donbidon.Core.Log.html" style="margin-left: 30px; padding-left: 0">Log</a>
+            </div>
+            <div id="namespace-1593750776" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-105527879"></a>
+                                <a href="../namespaces/donbidon.Core.Log.Method.html" style="margin-left: 30px; padding-left: 0">Method</a>
+            </div>
+            <div id="namespace-105527879" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.A_Method.html">A_Method</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.A_Stream.html">A_Stream</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.File.html">File</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Log.Method.Stream.html">Stream</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                            <li class="trait"><a href="../classes/donbidon.Core.Log.T_Logger.html">T_Logger</a></li>
+                                                                            <li class="class"><a href="../classes/donbidon.Core.Log.Factory.html">Factory</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-397534357"></a>
+                                <a href="../namespaces/donbidon.Core.Registry.html" style="margin-left: 30px; padding-left: 0">Registry</a>
+            </div>
+            <div id="namespace-397534357" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/donbidon.Core.Registry.I_Registry.html">I_Registry</a></li>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Registry.Common.html">Common</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Registry.Recursive.html">Recursive</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/donbidon.Core.Bootstrap.html">Bootstrap</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.ExceptionExtended.html">ExceptionExtended</a></li>
+                                                    <li class="class"><a href="../classes/donbidon.Core.Friendlification.html">Friendlification</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/donbidon.Core.Registry.html">\donbidon\Core\Registry</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\donbidon\Core\Registry</small>Common</h1>
+                    <p><em>Static and non-static registry functionality.</em></p>
+                    <p>Supports plain access rights and storing values by references.</p>
+<pre><code class="language-php">use \donbidon\Core\Registry\Common;
+
+$registry = new Common[
+    'key_1'     =&gt; "value_1",
+    'key_2'     =&gt; "value_2",
+    'ref_1'     =&gt; "~~&gt; ref_2",
+    'ref_2'     =&gt; "~~&gt; ref_value",
+    'ref_value' =&gt; "final reference value",
+], Common::ACTION_ALL &amp; ~Common::ACTION_MODIFY);
+var_dump($registry-&gt;exists('key_1'));
+var_dump($registry-&gt;exists('key_3'));
+var_dump($registry-&gt;get('key_3', "default value"));
+var_dump($registry-&gt;get('ref_1'));
+var_dump($registry-&gt;get('ref_2'));
+$registry-&gt;set('key_3', "value_3");
+$registry-&gt;set('key_1', "value_11");</code></pre>
+<p>outputs</p>
+<pre><code>bool(true)
+bool(false)
+string(13) "default value"
+string(21) "final reference value"
+string(21) "final reference value"
+
+Fatal error: Uncaught RuntimeException: ACTION_MODIFY: no permissions for key 'key_1'</code></pre>
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_getInstance" class="">getInstance()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method__set" class="">_set()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method__exists" class="">_exists()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method__isEmpty" class="">_isEmpty()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method__get" class="">_get()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method__delete" class="">_delete()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method__override" class="">_override()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_set" class="">set()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_exists" class="">exists()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_isEmpty" class="">isEmpty()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_get" class="">get()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_delete" class="">delete()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_override" class="">override()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_newFromKey" class="">newFromKey()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ACTION_NONE" class="">ACTION_NONE</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ACTION_CREATE" class="">ACTION_CREATE</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ACTION_MODIFY" class="">ACTION_MODIFY</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ACTION_DELETE" class="">ACTION_DELETE</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ACTION_OVERRIDE" class="">ACTION_OVERRIDE</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ACTION_ALL" class="">ACTION_ALL</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_REFERENCES" class="">REFERENCES</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#constant_ALL_INCLUSIVE" class="">ALL_INCLUSIVE</a><br />
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_checkPermissions" class="">checkPermissions()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_getByRef" class="">getByRef()</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#method_isRef" class="">isRef()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#property_instance" class="">$instance</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#property_scope" class="">$scope</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#property_options" class="">$options</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#property_checkRefs" class="">$checkRefs</a><br />
+                                                                    <a href="../classes/donbidon.Core.Registry.Common.html#property_refPattern" class="">$refPattern</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Registry.Common.html"><div class="path-wrapper">Registry\Common.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">donbidon\Core</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\donbidon\Core\Registry\Common</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="../classes/donbidon.Core.Registry.I_Registry.html"><div class="namespace-wrapper">\donbidon\Core\Registry\I_Registry</div></a></dd>
+                        
+                        
+                        
+                                                
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                                    <a id="constants" name="constants"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Constants</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACTION_NONE" name="constant_ACTION_NONE" class="anchor"></a>
+            <article id="constant_ACTION_NONE" class="constant">
+                <h3 class="">ACTION_NONE</h3>
+                <pre class="signature">ACTION_NONE = 0</pre>
+                <p><em>Disallow all actions</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACTION_CREATE" name="constant_ACTION_CREATE" class="anchor"></a>
+            <article id="constant_ACTION_CREATE" class="constant">
+                <h3 class="">ACTION_CREATE</h3>
+                <pre class="signature">ACTION_CREATE = 1</pre>
+                <p><em>Allow to create new keys</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACTION_MODIFY" name="constant_ACTION_MODIFY" class="anchor"></a>
+            <article id="constant_ACTION_MODIFY" class="constant">
+                <h3 class="">ACTION_MODIFY</h3>
+                <pre class="signature">ACTION_MODIFY = 2</pre>
+                <p><em>Allow to modify existing keys</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACTION_DELETE" name="constant_ACTION_DELETE" class="anchor"></a>
+            <article id="constant_ACTION_DELETE" class="constant">
+                <h3 class="">ACTION_DELETE</h3>
+                <pre class="signature">ACTION_DELETE = 4</pre>
+                <p><em>Allow to delete keys</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACTION_OVERRIDE" name="constant_ACTION_OVERRIDE" class="anchor"></a>
+            <article id="constant_ACTION_OVERRIDE" class="constant">
+                <h3 class="">ACTION_OVERRIDE</h3>
+                <pre class="signature">ACTION_OVERRIDE = 8</pre>
+                <p><em>Allow to override scope</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ACTION_ALL" name="constant_ACTION_ALL" class="anchor"></a>
+            <article id="constant_ACTION_ALL" class="constant">
+                <h3 class="">ACTION_ALL</h3>
+                <pre class="signature">ACTION_ALL = 15</pre>
+                <p><em>Allow all actions</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_REFERENCES" name="constant_REFERENCES" class="anchor"></a>
+            <article id="constant_REFERENCES" class="constant">
+                <h3 class="">REFERENCES</h3>
+                <pre class="signature">REFERENCES = 256</pre>
+                <p><em>Support references</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="constant_ALL_INCLUSIVE" name="constant_ALL_INCLUSIVE" class="anchor"></a>
+            <article id="constant_ALL_INCLUSIVE" class="constant">
+                <h3 class="">ALL_INCLUSIVE</h3>
+                <pre class="signature">ALL_INCLUSIVE = 271</pre>
+                <p><em>All actions amd references allowed.</em></p>
+                
+            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method___construct"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::__construct()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_instance" name="property_instance" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$instance</h3>
+                <pre class="signature">$instance : self</pre>
+                <p><em>Static registry instance</em></p>
+                
+
+                                <h4>Type</h4>
+                self
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_scope" name="property_scope" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$scope</h3>
+                <pre class="signature">$scope : array</pre>
+                <p><em>Scope</em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_options" name="property_options" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$options</h3>
+                <pre class="signature">$options : integer</pre>
+                <p><em>Initial options</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_checkRefs" name="property_checkRefs" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$checkRefs</h3>
+                <pre class="signature">$checkRefs : boolean</pre>
+                <p><em>Flag specifying to check references</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_refPattern" name="property_refPattern" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$refPattern</h3>
+                <pre class="signature">$refPattern : string</pre>
+                <p><em>Reference regexp pattern</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getInstance" name="method_getInstance" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getInstance()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getInstance(array  <span class="argument">$scope = array()</span>, integer  <span class="argument">$options = self::ACTION_ALL</span>) : static</pre>
+                <p><em>Returns static registry instance.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$scope </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$options </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    static
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__set" name="method__set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">_set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_set(string  <span class="argument">$key</span>, mixed  <span class="argument">$value</span>) : void</pre>
+                <p><em>Short alias for self::getInstance()-&gt;set().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::set()</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method_set"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::set()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__exists" name="method__exists" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">_exists()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_exists(string  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Short alias for self::getInstance()-&gt;exists().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method_exists"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::exists()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__isEmpty" name="method__isEmpty" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">_isEmpty()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_isEmpty(string  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Short alias for self::getInstance()-&gt;isEmpty().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method_exists"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::exists()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__get" name="method__get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">_get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_get(string  <span class="argument">$key = null</span>, mixed  <span class="argument">$default = null</span>, boolean  <span class="argument">$throw = true</span>) : mixed</pre>
+                <p><em>Short alias for self::getInstance()-&gt;get().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$default </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$throw </td>
+                                <td><p>Throw exception if no default value passed and
+key doesn't exist</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::get().</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method_get"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::get()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__delete" name="method__delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">_delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_delete(string  <span class="argument">$key</span>) : void</pre>
+                <p><em>Short alias for self::getInstance()-&gt;delete().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::delete().</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method_delete"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::delete()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method__override" name="method__override" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">_override()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">_override(array  <span class="argument">$scope</span>) : void</pre>
+                <p><em>Short alias for self::getInstance()-&gt;override().</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$scope </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::override().</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                                            <dt>See also</dt>
+                                                                <dd><a href="../classes/donbidon.Core.Registry.Common.html#method_override"><span class="namespace-wrapper">\donbidon\Core\Registry\Common::override()</span></a></dd>
+                                                                </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(array  <span class="argument">$scope = array()</span>, integer  <span class="argument">$options = self::ALL_INCLUSIVE</span>) </pre>
+                <p><em>Constructor.</em></p>
+                <p>Example:</p>
+<pre><code class="language-php">use donbidon\Core\Registry\Common;
+
+// Create registry allowing to add new keys only
+$registry = new Common(
+    [
+        'key_1' =&gt; "value_1",
+    ],
+    Common::ACTION_CREATE
+);
+
+$registry-&gt;set('key_2', "value_2"); // Ok
+
+// RuntimeException having Registry:ACTION_CREATE
+// code will be thrown.
+$registry-&gt;set('key_2', "value_2*");</code></pre>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$scope </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$options </td>
+                                <td><p>Combination of the following flags:</p>
+<ul>
+<li>self::ACTION_CREATE,</li>
+<li>self::ACTION_DELETE,</li>
+<li>self::ACTION_MODIFY,</li>
+<li>self::ACTION_OVERRIDE.</li>
+</ul></td>
+                            </tr>
+                                            </table>
+                
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_set" name="method_set" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">set()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">set(string  <span class="argument">$key</span>, mixed  <span class="argument">$value</span>) : void</pre>
+                <p><em>Sets scope value.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::checkPermissions().</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_exists" name="method_exists" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">exists()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">exists(string  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Returns true if scope exists, false otherwise.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isEmpty" name="method_isEmpty" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isEmpty()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isEmpty(string  <span class="argument">$key</span>) : boolean</pre>
+                <p><em>Returns true if scope value is empty, false otherwise.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_get" name="method_get" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">get()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">get(string  <span class="argument">$key = null</span>, mixed  <span class="argument">$default = null</span>, boolean  <span class="argument">$throw = true</span>) : mixed</pre>
+                <p><em>Returns scope value.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td><p>If not passed, whole scope will be returned</p></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$default </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$throw </td>
+                                <td><p>Throw exception if no default value passed and
+key doesn't exist</p></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::checkPermissions().</p></dd>
+                                                    <dt>\RuntimeException</dt>
+                            <dd><p>If key doesn't exist.</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    mixed
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_delete" name="method_delete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">delete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">delete(string  <span class="argument">$key</span>) : void</pre>
+                <p><em>Deletes scope key.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::checkPermissions().</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_override" name="method_override" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">override()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">override(array  <span class="argument">$scope</span>) : void</pre>
+                <p><em>Overrides scope.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$scope </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::checkPermissions().</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_newFromKey" name="method_newFromKey" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">newFromKey()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">newFromKey(string  <span class="argument">$key</span>) : static</pre>
+                <p><em>Returns new registry from value of key.</em></p>
+                <p>Replaces all references by its values.</p>
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::get().</p></dd>
+                                                                    </dl>
+                
+                                    <h4>Returns</h4>
+                    static
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_checkPermissions" name="method_checkPermissions" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">checkPermissions()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">checkPermissions(string  <span class="argument">$key</span>, integer  <span class="argument">$action</span>) : void</pre>
+                <p><em>Check action permissions.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$action </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from Friendlification::getConstNameByValue().</p></dd>
+                                                    <dt>\RuntimeException</dt>
+                            <dd><p>If doesn't have permissions for passed action.</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getByRef" name="method_getByRef" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">getByRef()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getByRef(string  <span class="argument">$key</span>, mixed  <span class="argument">$value</span>) : void</pre>
+                <p><em>Gets value by reference if possible.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$key </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>mixed</td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                                    <h4>Throws</h4>
+                    <dl>
+                                                    <dt>\ReflectionException</dt>
+                            <dd><p>Risen from self::get().</p></dd>
+                                                    <dt>\RuntimeException</dt>
+                            <dd><p>If cyclic or invalid reference detected.</p></dd>
+                                                                    </dl>
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isRef" name="method_isRef" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">isRef()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isRef(  <span class="argument">$value</span>, boolean  <span class="argument">$modify = true</span>) : boolean</pre>
+                <p><em>Validates if passed value is reference.</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$value </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$modify </td>
+                                <td><p>Flag specifying to modify $value
+(to cut &quot;~~&gt; &quot; prefix)</p></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/donbidon.Core.Registry.Common.html"><div class="path-wrapper">\donbidon\Core\Registry\Common</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Common.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Registry\Common.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/donbidon.html">\donbidon</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on June 28th, 2018 at 20:59.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>
