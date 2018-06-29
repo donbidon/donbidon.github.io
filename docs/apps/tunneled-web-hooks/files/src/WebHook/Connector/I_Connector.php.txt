@@ -1,0 +1,53 @@
+<?php
+/**
+ * Web-hook connector interface.
+ *
+ * @copyright <a href="http://donbidon.rf.gd/" target="_blank">donbidon</a>
+ * @license   https://opensource.org/licenses/mit-license.php
+ */
+
+namespace donbidon\TunneledWebHooks\WebHook\Connector;
+
+use donbidon\Core\Registry\I_Registry;
+use donbidon\TunneledWebHooks\I_Runner;
+
+/**
+ * Web-hook connector interface.
+ *
+ * <!-- move: namespaces/donbidon.TunneledWebHooks.WebHook.Connector.html -->
+ * <p><b>Web-hook connector</b></p>
+ * See <a href=
+ * "../classes/donbidon.TunneledWebHooks.WebHook.Connector.Telegram.html">
+ * Telegram class</a> source code.
+ * <!-- /move -->
+ * See <a href=
+ * "../classes/donbidon.TunneledWebHooks.WebHook.Connector.Telegram.html">
+ * Telegram class</a> source code.
+ *
+ * @see Telegram
+ */
+interface I_Connector
+{
+    /**
+     * Constructor.
+     *
+     * @param I_Runner   $runner
+     * @param I_Registry $registry  Web-hook registry part
+     */
+    public function __construct(I_Runner $runner, I_Registry $registry);
+
+    /**
+     * Registers web-hooks.
+     *
+     * @return void
+     */
+    public function register();
+
+    /**
+     * Releases web-hooks.
+     *
+     * @return void
+     */
+    public function release();
+}
+

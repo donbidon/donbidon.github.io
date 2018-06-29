@@ -1,0 +1,9 @@
+a.external {
+    position: relative;
+    top: -0.5em;
+}
+
+i.fa-external-link-alt {
+    color: darkgreen;
+    font-size: 8px;
+}
