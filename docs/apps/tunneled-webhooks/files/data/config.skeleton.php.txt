@@ -31,7 +31,7 @@ source[] = "*"
 ; Set full class name (including namespace) to use own service.
 class  = "ngrok"
 ;;;
-; Put path to "ngrok.exe" here:
+; Put path to "ngrok" here:
 ;;;
 command = "/path/to/ngrok http 80"
 ;;;
